@@ -117,6 +117,24 @@
                         </ul>
                     </li>
                 </ul>
+                <ul>
+                    <li class="active">
+                        <a href="JavaScript:;"><i class="icon-list"></i> 商品管理</a>
+                        <ul>
+                            <li><a href="/admin/goods">商品列表</a></li>
+                            <li><a href="/admin/goods/create">商品添加</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="active">
+                        <a href="JavaScript:;"><i class="icon-list"></i> 商品图片管理</a>
+                        <ul>
+                            <li><a href="/admin/goodsimg">商品图片列表</a></li>
+                            <li><a href="/admin/goodsimg/create">图片添加</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
         

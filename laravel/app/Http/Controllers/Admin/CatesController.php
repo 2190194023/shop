@@ -45,9 +45,20 @@ class CatesController extends Controller
      */
     public function create(Request $request)
     {
+    //查询所有数据   并分级
+     $cates = Cates::select('*',DB::raw("concat(path,',',id) as paths"))->orderBy('paths','asc')->get();
+
+     foreach ($cates as $key => $value){
+     	$n = substr_count($value->path,',');
+
+     	$cates[$key]->cname = str_repeat('|----',$n).$value->cname;
+     }
+
+    
+
     	$id = $request->input('id',0);
         //显示 添加页面
-        return view('admin.cates.create',['id'=>$id,'cates'=>self::getCateData()]);
+        return view('admin.cates.create',['id'=>$id,'cates'=>$cates]);
        
     }
 
@@ -63,6 +74,7 @@ class CatesController extends Controller
     	//验证 必填
     	$this->validate($request,[
     		'cname' => 'required',
+    		
     
     	],[
 

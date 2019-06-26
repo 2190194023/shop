@@ -20,3 +20,9 @@ Route::get('admin','Admin\IndexController@index');
 
 //路由： 后台分类
 Route::resource('admin/cates','Admin\CatesController');
+
+//路由：后台商品
+Route::resource('admin/goods','Admin\GoodsController');
+
+//路由：后天商品图片管理
+Route::resource('admin/goodsimg','Admin\GoodsimgController');
