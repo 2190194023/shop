@@ -24,5 +24,11 @@ Route::resource('admin/cates','Admin\CatesController');
 //路由：后台商品
 Route::resource('admin/goods','Admin\GoodsController');
 
-//路由：后天商品图片管理
+//路由：后台商品图片管理
 Route::resource('admin/goodsimg','Admin\GoodsimgController');
+
+//路由：后台秒杀商品管理
+Route::resource('admin/miao','Admin\MiaoController');
+
+//路由：后台活动管理
+Route::resource('admin/dong','Admin\HuodongController');

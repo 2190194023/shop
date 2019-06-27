@@ -12,36 +12,31 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>父类名称</th>
-                                    <th>父级ID</th>
-                                    <th>分类路径</th>
+                                    <th>活动折扣</th>
+                                    <th>活动金额</th>
+                                    <th>活动减价</th>
+                                    <th>活动买</th>
+                                    <th>活动赠</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            	@php 
-                            	use App\Models\Cates
-                            	@endphp
-
-                            	@foreach($cates as $k=>$v)
+                            	
+                            	@foreach($huodong as $k=>$v)
                                 <tr>
                                     <td>{{ $v->id }}</td>
-                                    <td>{{ $v->cname }}</td>
+                                    <td>{{ $v->zhekou }}</td>                                
+                                    <td>{{ $v->jine }}</td>
+                                    <td>{{ $v->jianjia }}</td>
+                                    <td>{{ $v->mai }}</td>
+                                    <td>{{ $v->zeng }}</td>
                                     <td>
-                                    @if($v->pid ==0)
-                                    顶级分类
-                                    @else
-                                    @php
-									$v = Cates::where('id',$v->pid)->first();
-									echo $v->cname;
-									@endphp
-									@endif
-                                    </td>
-                                    <td>{{ $v->path }}</td>
-                                    <td>
-                                    	@if(substr_count($v->path,',') < 2)
-                                    	<a href="/admin/cates/create?id={{ $v->id }}" class="btn btn-primary">添加子分类</a>
-                                    	@endif
+                                    	<a href="/admin/dong/{{ $v->id }}/edit" class="btn btn-primary">修改</a>
+                                    	<form action="/admin/dong/{{ $v->id }}" method="post" style="display:inline-block;">
+                                    		{{ csrf_field() }}
+                                    		{{ method_field('DELETE') }}
+                                    		<input type="submit" value="删除" class="btn btn-success">
+                                    	</form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -54,7 +49,7 @@
 
                  <div class="pull-right">
 						<!-- 显示页码 -->
-						{{ $cates->appends(['search'=>$search])->links() }}
+						
 				</div>
 				<style type="text/css">
         #pull_right{

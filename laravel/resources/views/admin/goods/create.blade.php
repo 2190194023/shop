@@ -99,6 +99,18 @@
                                     	<input type="text" name="xinghao" class="small">
                                     </div>
                                 </div>
+
+                                <div class="mws-form-row">
+                                	<label class="mws-form-label">活动</label>
+                                	<div class="mws-form-item">
+                                    	<select class="small"  name="pid">
+                                        	<option value="0">--请选择--</option>
+                                        	@foreach($huodong as $kk=>$vv)
+                                        	<option value="{{ $vv->id }}">活动：{{ $vv->id }}</option>
+                                        	@endforeach 
+                    					</select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="mws-button-row">
                             	<input type="submit" class="btn btn-danger">

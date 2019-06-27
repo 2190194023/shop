@@ -135,6 +135,24 @@
                         </ul>
                     </li>
                 </ul>
+                <ul>
+                    <li class="active">
+                        <a href="JavaScript:;"><i class="icon-list"></i>秒杀管理</a>
+                        <ul>
+                            <li><a href="/admin/miao">秒杀商品列表</a></li>
+                            <li><a href="/admin/miao/create">添加秒杀商品</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="active">
+                        <a href="JavaScript:;"><i class="icon-list"></i>活动管理</a>
+                        <ul>
+                            <li><a href="/admin/dong">活动列表</a></li>
+                            <li><a href="/admin/dong/create">添加活动</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
         

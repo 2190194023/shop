@@ -40,6 +40,7 @@
                                     <th>销售</th>
                                     <th>添加时间</th>
                                     <th>型号</th>
+                                    <th>活动</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
@@ -63,6 +64,13 @@
                                     <td>{{ $v->gnum }}</td>
                                     <td>{{ $v->gaddtime }}</td>
                                     <td>{{ $v->xinghao }}</td>
+                                    <td>
+										@if($v->pid == 0)
+											无活动
+										@else									
+                                  		活动：{{ $v->pid }}
+                                  		@endif
+                                    </td>
                                     <td>
                                     	
                                     	<a href="/admin/goods/{{ $v->id }}/edit" class="btn btn-primary">修改</a>

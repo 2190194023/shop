@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cates;
 use App\Models\Goods;
+use App\Models\Huodong;
 use DB;
 
 class GoodsController extends Controller
@@ -51,11 +52,11 @@ class GoodsController extends Controller
     {
 	    
 
-    
+    	$huodong = Huodong::get();
 
     	$id = $request->input('id',0);
         //显示 添加页面
-        return view('admin.goods.create',['id'=>$id,'cates'=>self::getCateData()]);
+        return view('admin.goods.create',['id'=>$id,'cates'=>self::getCateData(),'huodong'=>$huodong]);
     }
 
     /**
@@ -96,6 +97,7 @@ class GoodsController extends Controller
         //将数据压入数据库
         $goods = new Goods;
         $goods->tid = $request->input('tid','');
+        $goods->pid = $request->input('pid','');
         $goods->gname = $request->input('gname',''); 
         $goods->gcompany = $request->input('gcompany','');
         $goods->gdescr = $request->input('gdescr','');
@@ -135,11 +137,12 @@ class GoodsController extends Controller
     public function edit(request $request,$id)
     {
     	$cha = Goods::where('id',$id)->first();
+    	$huodong = Huodong::get();
     	
 
     	$id = $request->input('id',0);
         //跳转修改
-       	return view('admin.goods.edit',['cha'=>$cha,'id'=>$id,'cates'=>self::getCateData()]);
+       	return view('admin.goods.edit',['cha'=>$cha,'id'=>$id,'cates'=>self::getCateData(),'huodong'=>$huodong]);
     }
 
     /**
@@ -158,6 +161,7 @@ class GoodsController extends Controller
        $goods = Goods::find($id);
 
         $goods->tid = $request->input('tid','');
+        $goods->pid = $request->input('pid','');
         $goods->gname = $request->input('gname',''); 
         $goods->gcompany = $request->input('gcompany','');
         $goods->gdescr = $request->input('gdescr','');

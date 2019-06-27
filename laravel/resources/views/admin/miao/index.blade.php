@@ -12,7 +12,7 @@
 
 		<!-- 搜索 开始 -->
         <div class="form-body" style="height:50px;padding-top:30px" data-example-id="simple-form-inline">
-          <form class="form-inline" action="/admin/goodsimg">
+          <form class="form-inline" action="/admin/miao">
             <div class="form-group">
               <input type="text" class="form-control" name="search" value="{{ $search }}" placeholder="链接名称">
             <button type="submit" class="btn btn-success">搜索</button>
@@ -23,7 +23,7 @@
 
 <div class="mws-panel grid_8">
                 	<div class="mws-panel-header">
-                    	<span><i class="icon-table"></i>商品图片显示</span>
+                    	<span><i class="icon-table"></i>秒杀商品显示</span>
                     </div>
                     <div class="mws-panel-body no-padding">
                         <table class="mws-table">
@@ -31,22 +31,24 @@
                                 <tr>
                                     <th>ID</th>                         
                                     <th>商品名称</th>
-                                    <th>图片信息</th>
-                                    <th>图片</th>
+                                    <th>秒杀商品状态</th>
+                                    <th>秒杀商品数量</th>
+                                    <th>秒杀商品价格</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            	@foreach($goodsimg as $k=>$v)
+                            	@foreach($miao as $k=>$v)
                                 <tr>
                                     <td>{{ $v->id }}</td>
-                                    <td>{{ $v->gid }}</td>
-                                    <td>{{ $v->gpic }}</td>
-                                    <td><img src="/uploads/{{ $v->lujing }}" style="width:50px;"></td>
+                                    <td>{{ $temp[$k] }}</td>
+                                    <td>{{ $v->status }}</td>
+                                    <td>{{ $v->mouse }}</td>
+                                    <td>{{ $v->maney }}</td>
                                     <td>
                                     	
-                                    	<a href="/admin/goodsimg/{{ $v->id }}/edit" class="btn btn-primary">修改</a>
-                                    	<form action="/admin/goodsimg/{{ $v->id }}" method="post" style="display:inline-block;">
+                                    	<a href="/admin/miao/{{ $v->id }}/edit" class="btn btn-primary">修改</a>
+                                    	<form action="/admin/miao/{{ $v->id }}" method="post" style="display:inline-block;">
                                     		{{ csrf_field() }}
                                     		{{ method_field('DELETE') }}
                                     		<input type="submit" value="删除" class="btn btn-success">
@@ -60,11 +62,6 @@
                        
                     </div>
                 </div>
-
-                 <div class="pull-right">
-						<!-- 显示页码 -->
-						{{ $goodsimg->appends(['search'=>$search])->links() }}
-				</div>
 				<!-- 页码样式 -->
 				<style type="text/css">
 			        #pull_right{
